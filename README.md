@@ -1,3 +1,3 @@
-# vitejs-vite-fbnjrr
+# Adapt Framework Editing Tools
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/vitejs-vite-fbnjrr)
+[Editing on StackBlitz](https://stackblitz.com/edit/vitejs-vite-fbnjrr)
