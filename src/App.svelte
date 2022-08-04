@@ -17,13 +17,6 @@ const dummyObj = [
   },
 ];
 
-const updateThing = (objectKey, textToInsert) =>
-  dummyObj.map((el, idx) => ({
-    ...el,
-    objectKey: `${textToInsert}${Math.ceil(idx / 2)}`,
-  }));
-  
-
 // console.log(updatedThing('_parentId', 'blockTitle'));
 
 const exportToJsonFile = jsonData => {
@@ -44,11 +37,21 @@ const exportToJsonFile = jsonData => {
 	}]
 
   let jsonInput = `...`
-$: console.log(jsonInput)
+  // MAKE THE JSON READABLE 
+  // jsonInput.split('\r\n')
+  // let dataArray = jsonInput.split('\r\n').map((a)=>{
+  //   JSON.parse(a);
+  // })
+  // $: console.log(dataArray[i]);
 
+const updateThing = (objectKey, textToInsert) =>
+  jsonInput.map((el, idx) => ({
+    ...el,
+    objectKey: `${textToInsert}${Math.ceil(idx / 2)}`,
+  }));
 
   const handleClick = () => {
-    jsonInput = updateThing
+    jsonInput =  updateThing('_parentId', jsonInput)
   };
 
   // const handleInput = (e) => {
@@ -63,7 +66,7 @@ $: console.log(jsonInput)
 <!-- <input type="text" on:input="{handleInput}" value="{beltColor}" /> -->
 <!-- <input type="text" bind:value="{beltColor}" /> -->
 
-<button id="convert" on:click={() => updateThing('_parentId', jsonInput)}> pair the id's </button>
+<button id="convert" on:click={() => {handleClick()}}> pair the id's </button>
 <button id="download" on:click={() => exportToJsonFile(jsonInput)}>download the json</button>
 
 
